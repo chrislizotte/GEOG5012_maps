@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<!-- This is the code that fetches the Leaflet code and allows it to work in your website. You don't need
+to modify this. -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+     crossorigin=""></script>
+
+<!-- This is CSS code that sets the text style for the map and formats the main body of text and the map.
+You don't need to modify this. -->
+<style>
+
+div {font-family: arial}
+
+#map { display: inline-block; width: 50%; height: 400px; }
+#text { display: inline-block; width: 40%;}
+
+</style>
+
+</head>
+
+<!-- This is the header of your page, where you can enter a title for your map and your name. Replace the corresponding
+text in the <h3> and <h4> tags to do this. -->
+<body>
+<div id="header">
+<h3 style="text-align:center">Replace this text to give your map a title</h3>
+<h4 style="text-align:center">Replace this text with your name</h4>
+</div>
+
+<!-- This is the main body of your accompanying text (about 650 words). Keep in mind that you will need to address
+<p> tags as necessary to separate it into paragraphs -->
+<div id="text">
+<p>Paste your main text here. Remember that to separate your text into paragraphs you will need additional &ltp&gt and &lt/p&gt tags.</p>
+<p>Here is an example of a second paragraph.</p>
+<p>Here's a third paragraph. Use as many as you need.</p>
+</div>
+
+<div id="map">
+
+<!-- Everything in the <script> tags is the JavaScript code that calls functions from Leaflet to create the map object, place
+map tiles within it, and then create features on the map itself -->
+<script>
+// you should change the coordinates in the setView function to match where you would like your map to center
+// on when it's opened; you can also set the zoom level.
+var map = L.map('map').setView([51.505, -0.09], 13)
+
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+}).addTo(map);
+
+// below are examples of map features. Keep in mind that what follows the keyword "var" is totally arbitrary;
+// I have given then the names "marker," "latlngs," "polyline" and "polygon", but those are just variable names that
+// could be anything.
+
+// this is an example of a basic map marker. Add as many as you need, and make sure
+// to change their coordinates as appropriate.
+var marker = L.marker([51.5, -0.09]).addTo(map);
+
+// this is an exmaple of a line. You must first define the array of coordinates that the line will go through;
+// each pair of coordinates in the brackets ("[]") is one point that the line passes through. There is no limit
+// to the number of points a line can include. Remember to separate each pair of coordinates (except the final
+// one) with a comma (",").
+var latlngs = [
+    [51.4952, -0.1439],
+    [51.5167, -0.1769],
+    [51.5316, -0.1236]
+];
+var polyline = L.polyline(latlngs, {color: 'red'}).addTo(map);
+
+// this is an example of a polygon. Each pair of coordinates within the brackets ("[]") represents
+// one vertex of the polygon. This example is a triangle; a square would have four pairs, for instance.
+// you can make your polygons whatever shape you like. Remember to separate each pair of coordinates (except the final)
+// one with a comma (",").
+var polygon = L.polygon([
+    [51.509, -0.08],
+    [51.503, -0.06],
+    [51.51, -0.047]
+]).addTo(map);
+
+// These are popups that can be bound to any map feature (marker, polyline, polygon). Keep in mind that creating
+// a popup is a two-step process; create the map feature (as above), and then bind the popup to it as below. The
+// basic syntax is variableName.bindPopup("Text you would like to have in the popup.") The first example shows
+// how you can insert HTML tags in the text, but it's not necessary to do so.
+
+marker.bindPopup("<b>Hello world!</b><br>I am a popup.")
+polyline.bindPopup("I am a line.");
+polygon.bindPopup("I am a polygon.");
+
+</script>
+</div>
+
+<!-- Below is the HTML code for creating your reference list. Each reference should be in a pair of <li></li> tags-->
+<div id="references">
+<h3>References</h3>
+<ul>
+	<li>Add a reference here</li>
+	<li>Add a reference here</li>
+	<li>Add a reference here</li>
+	<li>Continue adding references as needed using &ltli&gt and &lt/li&gt tags</li>
+</ul>
+</div>
+
+</body>
+
+</html>
